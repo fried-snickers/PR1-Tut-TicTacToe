@@ -26,7 +26,7 @@ public class TicTacToe {
     /*
      * Constructor 
      */
-    public TicTacToe(final boolean cpuMode, final char player1Symbol, final char player2Symbol) {
+    public TicTacToe(final boolean cpuMode, final char playerASymbol, final char playerBSymbol) {
         /*---initialise board---*/
 
         this.board = new char[9];
@@ -41,8 +41,8 @@ public class TicTacToe {
 
         this.cpuMode = cpuMode;
         this.sc = new Scanner(System.in);
-        this.playerASymbol = player1Symbol;
-        this.playerBSymbol = player2Symbol;
+        this.playerASymbol = playerASymbol;
+        this.playerBSymbol = playerBSymbol;
         this.result = Results.UNDETERMINED;
     }
 
@@ -93,7 +93,7 @@ public class TicTacToe {
             System.out.println("\n\nLet's play! This is round " + roundCounter);
 
             //if cpu begins, increment roundCounter because CPU is PLAYER_A
-            if(cpuBegins && (iterationCounter == 0))
+            if(this.cpuMode && cpuBegins && (iterationCounter == 0))
                 iterationCounter++;
 
             //controls continuation of a single round (player move - print board - evaluate result)
@@ -154,10 +154,10 @@ public class TicTacToe {
         /*---print statistics---*/
 
         System.out.println("\n\nHere's your statistics:");
-        System.out.println("Rounds played: " + (roundCounter-1)); //-1 because roundCounter is incremented after each round, even if the game is discontinued
-        System.out.println("\tDraw: " + drawCounter);
-        System.out.println("\tWin Player A: " + playerAWinCounter);
-        System.out.println("\tWin Player B: " + playerBWinCounter);
+        System.out.println("Rounds played: \t" + (roundCounter-1)); //-1 because roundCounter is incremented after each round, even if the game is discontinued
+        System.out.println("Draw: \t\t" + drawCounter);
+        System.out.println("Win Player A: \t" + playerAWinCounter);
+        System.out.println("Win Player B: \t" + playerBWinCounter);
         System.out.println("\nGoodbye!");
     }
 
