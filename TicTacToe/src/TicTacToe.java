@@ -93,7 +93,7 @@ public class TicTacToe {
             System.out.println("\n\nLet's play! This is round " + roundCounter);
 
             //if cpu begins, increment roundCounter because CPU is PLAYER_A
-            if(this.cpuMode && cpuBegins && (iterationCounter == 0))
+            if(this.cpuMode && !cpuBegins && (iterationCounter == 0))
                 iterationCounter++;
 
             //controls continuation of a single round (player move - print board - evaluate result)
@@ -115,12 +115,12 @@ public class TicTacToe {
                 this.result = checkResultStatus(latestPlayedIndex);
                 switch(this.result) {
                     case PLAYER_A_WINS:
-                        System.out.println("Congratulations Player A, you won!");
+                        System.out.println("Congratulations, Player A, you won!");
                         playerAWinCounter++;
                         this.result = Results.PLAYER_A_WINS;
                         break;
                     case PLAYER_B_WINS:
-                        System.out.println("Congratulations Player B, you won!");
+                        System.out.println("Congratulations, Player B, you won!");
                         playerBWinCounter++;
                         this.result = Results.PLAYER_B_WINS;
                         break;
@@ -132,10 +132,15 @@ public class TicTacToe {
                     case UNDETERMINED:
                         break;
                 }
-                iterationCounter++;
             } while(this.result == Results.UNDETERMINED);
             iterationCounter = 0;
             roundCounter++;
+
+            /*---reset field---*/
+
+            for(int fieldIndex = 0; fieldIndex < this.board.length; fieldIndex++) {
+                this.board[fieldIndex] = ' ';
+            }
 
             /*---ask player if he wants to play another game---*/
 
@@ -287,6 +292,6 @@ public class TicTacToe {
     }
 
     public static void main(String[] args) {
-        new TicTacToe(false, 'x', 'o').playGame();
+        new TicTacToe(Boolean.parseBoolean(args[0]), 'x', 'o').playGame();
     }
 }
