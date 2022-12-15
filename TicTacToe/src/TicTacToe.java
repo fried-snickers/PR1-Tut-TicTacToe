@@ -106,6 +106,7 @@ public class TicTacToe {
                     latestPlayedIndex = playMove(Players.PLAYER_B);
                 
                 //alternatively: latestPlayerIndex = playMove((iterationCounter%2 == 0) ? Players.PLAYER_A : Players.PLAYER_B);
+                
                 iterationCounter++;
 
                 //print board for intermediate result
@@ -134,6 +135,9 @@ public class TicTacToe {
                         break;
                 }
             } while(this.result == Results.UNDETERMINED);
+            
+            /*---reset game, but remember # of rounds played---*/
+            
             iterationCounter = 0;
             roundCounter++;
 
